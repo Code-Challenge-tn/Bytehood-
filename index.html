@@ -408,49 +408,69 @@
 
            
             <!--========== CONTACT US ==========-->
-<section class="contact section bd-container" id="contact">
-    <div class="contact__container bd-grid">
-        <div class="contact__data">
-            <span class="section-subtitle contact__initial">Join Us</span>
-            <h2 class="section-title contact__initial">Chef Registration</h2>
-            <p class="contact__description">
-                If you are a chef and would like to join our team, please fill out the form below. We’ll get back to you shortly!
-            </p>
-        </div>
-
-        <div class="contact__form">
-            <form action="https://formspree.io/f/mpwwekbk" method="POST">
-                <div class="form-group">
-                    <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth:</label>
-                    <input type="date" id="dob" name="dob" required>
-                </div>
-                <div class="form-group">
-                    <label for="idNumber">ID Number:</label>
-                    <input type="text" id="idNumber" name="idNumber" placeholder="8-digit ID number" pattern="\d{8}" required>
-                </div>
-                <div class="form-group">
-                    <label for="location">Location:</label>
-                    <select id="location" name="location" required>
-                        <option value="Ettadhamen">Ettadhamen</option>
-                        <option value="Rades">Rades</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="button">Submit</button>
-                </div>
-            </form>
+            <section class="contact section bd-container" id="contact" style="padding: 40px 20px; text-align: center;">
+                <div class="contact__container bd-grid" style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; max-width: 1200px; margin: 0 auto;">
+                    <div class="contact__data" style="text-align: left;">
+                        <span class="section-subtitle contact__initial" style="color: #F58724; font-weight: bold; text-transform: uppercase; font-size: 14px; margin-bottom: 10px; display: inline-block;">Join Us</span>
+                        <h2 class="section-title contact__initial" style="font-size: 28px; margin-bottom: 10px; color: #333;">Chef Registration</h2>
+                        <p class="contact__description" style="font-size: 16px; color: #666; margin-bottom: 20px;">
+                            If you are a chef and would like to join our team, please fill out the form below. We’ll get back to you shortly!
+                        </p>
+                    </div>
             
-        </div>
-    </div>
-</section>
+                    <div class="contact__form">
+                        <form action="https://formspree.io/f/xwppdvod" method="POST">
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="firstName" style="display: block; margin-bottom: 5px; font-weight: bold;">First Name:</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="lastName" style="display: block; margin-bottom: 5px; font-weight: bold;">Last Name:</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="dob" style="display: block; margin-bottom: 5px; font-weight: bold;">Date of Birth:</label>
+                                <input type="date" id="dob" name="dob" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="idNumber" style="display: block; margin-bottom: 5px; font-weight: bold;">ID Number:</label>
+                                <input type="text" id="idNumber" name="idNumber" placeholder="8-digit ID number" pattern="\d{8}" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="location" style="display: block; margin-bottom: 5px; font-weight: bold;">Location:</label>
+                                <select id="location" name="location" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                                    <option value="Tunis">Tunis</option>
+                                    <option value="La Marsa">La Marsa</option>
+                                    <option value="Sidi Bou Said">Sidi Bou Said</option>
+                                    <option value="Le Kram">Le Kram</option>
+                                    <option value="Carthage">Carthage</option>
+                                    <option value="La Goulette">La Goulette</option>
+                                    <option value="Manouba">Manouba</option>
+                                    <option value="Ben Arous">Ben Arous</option>
+                                    <option value="Ezzahra">Ezzahra</option>
+                                    <option value="Rades">Rades</option>
+                                    <option value="Ettadhamen">Ettadhamen</option>
+                                    <option value="Ariana">Ariana</option>
+                                    <option value="Soukra">Soukra</option>
+                                    <option value="Bardo">Bardo</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="homeNumber" style="display: block; margin-bottom: 5px; font-weight: bold;">Home Number:</label>
+                                <input type="text" id="homeNumber" name="homeNumber" placeholder="Enter your home number" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 15px;">
+                                <label for="phoneNumber" style="display: block; margin-bottom: 5px; font-weight: bold;">Phone Number:</label>
+                                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="button" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer; width: 100%;">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
 
         </main>
 
