@@ -6,10 +6,10 @@
   --header-height: 3rem;
 
   /*========== Colors ==========*/
-  --first-color: #F58724;
+  --first-color: #f;
   --first-color-alt: #F58724;
-  --title-color: #393939;
-  --text-color: #707070;
+  --title-color: #F58724;
+  --text-color: #0e0101;
   --text-color-light: #A6A6A6;
   --body-color: #FBFEFD;
   --container-color: #FFFFFF;
@@ -64,7 +64,7 @@ html{
 
 /*========== Variables Dark theme ==========*/
 body.dark-theme{
-  --title-color: #F1F3F2;
+  --title-color: #F58724;
   --text-color: #C7D1CC;
   --body-color: #1D2521;
   --container-color: #27302C;
