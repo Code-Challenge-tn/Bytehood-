@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
         <!--========== BOX ICONS ==========-->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     
@@ -394,22 +395,8 @@
                             </div>
                             <div class="form-group" style="margin-bottom: 15px;">
                                 <label for="location" style="display: block; margin-bottom: 5px; font-weight: bold;">Location:</label>
-                                <select id="location" name="location" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
-                                    <option value="Tunis">Tunis</option>
-                                    <option value="La Marsa">La Marsa</option>
-                                    <option value="Sidi Bou Said">Sidi Bou Said</option>
-                                    <option value="Le Kram">Le Kram</option>
-                                    <option value="Carthage">Carthage</option>
-                                    <option value="La Goulette">La Goulette</option>
-                                    <option value="Manouba">Manouba</option>
-                                    <option value="Ben Arous">Ben Arous</option>
-                                    <option value="Ezzahra">Ezzahra</option>
-                                    <option value="Rades">Rades</option>
-                                    <option value="Ettadhamen">Ettadhamen</option>
-                                    <option value="Ariana">Ariana</option>
-                                    <option value="Soukra">Soukra</option>
-                                    <option value="Bardo">Bardo</option>
-                                </select>
+                                <div id="map" style="height: 400px; border: 1px solid #ccc; border-radius: 4px;"></div>
+                                <input type="hidden" id="location" name="location" required />
                             </div>
                             
                             <div class="form-group" style="margin-bottom: 15px;">
@@ -424,7 +411,35 @@
                     </div>
                 </div>
             </section>
-
+            <script>
+            // Initialiser la carte
+            var map = L.map('map').setView([36.8065, 10.1815], 10); // Coordonnées par défaut (Tunis)
+        
+            // Ajouter les tuiles de la carte
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap'
+            }).addTo(map);
+        
+            // Marqueur pour afficher la sélection
+            var marker;
+        
+            // Gérer les clics sur la carte
+            map.on('click', function(e) {
+                var lat = e.latlng.lat;
+                var lng = e.latlng.lng;
+        
+                // Mettre à jour le marqueur
+                if (marker) {
+                    marker.setLatLng(e.latlng);
+                } else {
+                    marker = L.marker(e.latlng).addTo(map);
+                }
+        
+                // Enregistrer les coordonnées dans le champ masqué
+                document.getElementById('location').value = lat + ',' + lng;
+            });
+        </script>
         </main>
 
         <!--========== FOOTER ==========-->
