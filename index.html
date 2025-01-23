@@ -376,29 +376,29 @@
                     </div>
             
                     <div class="contact__form">
-                        <form action="https://formspree.io/f/xwppdvod" method="POST" style="direction: rtl; text-align: right;">
-                            <div class="form-group" style="margin-bottom: 15px;">
+                        <form id="myForm" action="https://formspree.io/f/xwppdvod" method="POST" style="direction: rtl; text-align: right;">
+                            <div class="form-group">
                                 <label for="firstName" style="display: block; margin-bottom: 5px; font-weight: bold;">الاسم الأول:</label>
                                 <input type="text" id="firstName" name="firstName" placeholder="أدخل اسمك الأول" pattern="[أ-يa-zA-Z]+" title="الاسم الأول يجب أن يحتوي فقط على أحرف" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
                             </div>
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group">
                                 <label for="lastName" style="display: block; margin-bottom: 5px; font-weight: bold;">اللقب:</label>
                                 <input type="text" id="lastName" name="lastName" placeholder="أدخل لقبك" pattern="[أ-يa-zA-Z]+" title="اللقب يجب أن يحتوي فقط على أحرف" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
                             </div>
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group">
                                 <label for="dob" style="display: block; margin-bottom: 5px; font-weight: bold;">تاريخ الميلاد:</label>
                                 <input type="date" id="dob" name="dob" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
                             </div>
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group">
                                 <label for="idNumber" style="display: block; margin-bottom: 5px; font-weight: bold;">رقم بطاقة التعريف:</label>
                                 <input type="text" id="idNumber" name="idNumber" placeholder="رقم بطاقة التعريف من 8 أرقام" pattern="\d{8}" title="رقم بطاقة التعريف يجب أن يحتوي على 8 أرقام" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
                             </div>
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group">
                                 <label for="location" style="display: block; margin-bottom: 5px; font-weight: bold;">عنوان السكن:</label>
                                 <div id="map" style="height: 400px; border: 1px solid #ccc; border-radius: 4px;"></div>
                                 <input type="hidden" id="location" name="location" required />
                             </div>
-                            <div class="form-group" style="margin-bottom: 15px;">
+                            <div class="form-group">
                                 <label for="phoneNumber" style="display: block; margin-bottom: 5px; font-weight: bold;">رقم الهاتف:</label>
                                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="أدخل رقم هاتفك" pattern="\d{8}" title="رقم الهاتف يجب أن يحتوي على 8 أرقام" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
                             </div>
@@ -407,61 +407,76 @@
                             </div>
                         </form>
                         
-                    </div>
-                </div>
-            </section>
-            <div id="locationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px;">
-                    <h2 style="margin-top: 0;">Enable Location</h2>
-                    <p>Your location is required to complete the form. Please enable location services in your device or browser settings.</p>
-                    <button onclick="closeModal()" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer;">OK</button>
-                </div>
-            </div>
-            
-            <script>
-                // Initialiser la carte
-                var map = L.map('map').setView([36.8065, 10.1815], 10); // Coordonnées par défaut (Tunis)
-            
-                // Ajouter les tuiles de la carte
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                    attribution: '© OpenStreetMap'
-                }).addTo(map);
-            
-                // Marqueur pour afficher la localisation
-                var marker;
-            
-                // Vérifier si la géolocalisation est disponible
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        function(position) {
-                            var lat = position.coords.latitude;
-                            var lng = position.coords.longitude;
-            
-                            // Centrer la carte sur la localisation de l'utilisateur
-                            map.setView([lat, lng], 15);
-            
-                            // Ajouter un marqueur
-                            marker = L.marker([lat, lng]).addTo(map);
-            
-                            // Enregistrer les coordonnées dans le champ masqué
-                            document.getElementById('location').value = lat + ',' + lng;
-                        },
-                        function(error) {
-                            // Afficher le pop-up en cas d'erreur ou de refus
-                            document.getElementById('locationModal').style.display = 'block';
-                        }
-                    );
-                } else {
-                    // Afficher le pop-up si la géolocalisation n'est pas supportée
-                    document.getElementById('locationModal').style.display = 'block';
-                }
-            
-                // Fermer le pop-up
-                function closeModal() {
-                    document.getElementById('locationModal').style.display = 'none';
-                }
-            </script>
+                        <div id="locationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px;">
+                                <h2 style="margin-top: 0;">Enable Location</h2>
+                                <p>Your location is required to complete the form. Please enable location services in your device or browser settings.</p>
+                                <button onclick="closeModal()" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer;">OK</button>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            // Initialiser la carte
+                            var map = L.map('map').setView([36.8065, 10.1815], 10); // Coordonnées par défaut (Tunis)
+                        
+                            // Ajouter les tuiles de la carte
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '© OpenStreetMap'
+                            }).addTo(map);      
+                        
+                            // Marqueur pour afficher la localisation
+                            var marker;
+                            var locationAuthorized = false;
+                        
+                            // Vérifier si la géolocalisation est disponible
+                            function checkLocation() {
+                                if (navigator.geolocation) {
+                                    navigator.geolocation.getCurrentPosition(
+                                        function(position) {
+                                            var lat = position.coords.latitude;
+                                            var lng = position.coords.longitude;
+                        
+                                            // Centrer la carte sur la localisation de l'utilisateur
+                                            map.setView([lat, lng], 15);
+                        
+                                            // Ajouter un marqueur
+                                            marker = L.marker([lat, lng]).addTo(map);
+                        
+                                            // Enregistrer les coordonnées dans le champ masqué
+                                            document.getElementById('location').value = lat + ',' + lng;
+                                            locationAuthorized = true;
+                        
+                                            // Fermer le modal si la localisation est autorisée
+                                            closeModal();
+                                        },
+                                        function(error) {
+                                            // Afficher le pop-up en cas d'erreur ou de refus
+                                            document.getElementById('locationModal').style.display = 'block';
+                                        }
+                                    );
+                                } else {
+                                    // Afficher le pop-up si la géolocalisation n'est pas supportée
+                                    document.getElementById('locationModal').style.display = 'block';
+                                }
+                            }
+                        
+                            // Gérer l'envoi du formulaire
+                            document.getElementById('myForm').addEventListener('submit', function(event) {
+                                if (!locationAuthorized) {
+                                    event.preventDefault(); // Empêcher l'envoi du formulaire
+                                    checkLocation(); // Vérifier la localisation
+                                }
+                            });
+                        
+                            // Fermer le pop-up
+                            function closeModal() {
+                                document.getElementById('locationModal').style.display = 'none';
+                            }
+                        
+                            // Appeler la fonction pour vérifier la localisation immédiatement
+                            checkLocation();
+                        </script>
         </main>
 
         <!--========== FOOTER ==========-->
