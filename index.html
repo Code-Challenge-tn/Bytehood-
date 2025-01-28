@@ -30,8 +30,9 @@
         <!--========== HEADER ==========-->
         <header class="l-header" id="header">
             <nav class="nav bd-container">
+                <a href="#">
                 <img href="#" src="assets/img/logo.png" alt="Logo" style="height: 40px;">                
-
+            </a>
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
@@ -57,12 +58,12 @@
             <h2 class="section-title app__initial">App is aviable</h2>
             <p class="app__description">Find our application and download it, you can make reservations, food orders, see your deliveries on the way and much more.</p>
             <div class="app__stores">
-                <!-- <a href="#"><img src="assets/img/app1.png" alt="" class="app__store"></a> -->
+                <a href="#"><img src="assets/img/app1.png" alt="" class="app__store"></a>
                 <a href="#"><img src="assets/img/app2.png" alt="" class="app__store"></a>
             </div>
         </div>
 
-        <img src="assets/img/movil-app.png" alt="" class="app__img">
+        <img src="assets/img/byt.png" alt="" class="app__img">
     </div>
 </section>
 
@@ -402,16 +403,293 @@
                                 <label for="phoneNumber" style="display: block; margin-bottom: 5px; font-weight: bold;">رقم الهاتف:</label>
                                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="أدخل رقم هاتفك" pattern="\d{8}" title="رقم الهاتف يجب أن يحتوي على 8 أرقام" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px;">
                             </div>
-                            <div class="form-group">
-                                <button type="submit" class="button" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer; width: 100%;">إرسال</button>
-                            </div>
+
+                            <!-- Formulaire avec le bouton -->
+                        <div class="form-group">
+                            <input type="checkbox" id="terms" style="margin-left: 10px;">
+                            <label for="terms" style="font-weight: bold;">
+                                أوافق على <a href="#services" onclick="openTerms()" style="color: #F58724; text-decoration: underline;">الشروط والأحكام</a>.
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" id="submitButton" class="button" disabled style="background-color: #ccc; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: not-allowed; width: 100%;">إرسال</button>
+                        </div>
                         </form>
                         
+                        <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; width: 90%; max-width: 1200px; height: 90%; overflow-y: auto; text-align: right; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);">
+                                <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Terms and Conditions for Using bytehood mobile app</h3>
+                                <div id="termsContainer" style="font-size: 18px; line-height: 1.8; margin: 20px;">
+                                    <!-- Language Selection Buttons -->
+                                    <div style="text-align: right; margin-bottom: 20px;">
+                                        <button onclick="setLanguage('en')" style="margin: 0 5px; padding: 10px 15px; border: none; background-color: #007BFF; color: #fff; border-radius: 4px; cursor: pointer;">English</button>
+                                        <button onclick="setLanguage('ar')" style="margin: 0 5px; padding: 10px 15px; border: none; background-color: #28A745; color: #fff; border-radius: 4px; cursor: pointer;">العربية</button>
+                                        <button onclick="setLanguage('fr')" style="margin: 0 5px; padding: 10px 15px; border: none; background-color: #FFC107; color: #fff; border-radius: 4px; cursor: pointer;">Français</button>
+                                    </div>
+                                
+                                    <!-- Terms Content -->
+                                    <div id="termsContent">
+                                        <!-- The content will be dynamically updated by JavaScript -->
+                                    </div>
+                                </div>
+                                
+                                <script>
+                                    const translations = {
+                                        en: `
+                                            
+                                        <h3>Terms and Conditions for Using Bytehood Mobile App</h3>
+                                            <p>Welcome to Bytehood services. By using our platform to share surplus meals, you agree to comply with the following terms and conditions. These terms are designed to ensure food safety, transparency, and a positive experience for all users.</p>
+                                            <h4>1. General Agreement</h4>
+                                            <p>By registering and using Bytehood mobile app, you acknowledge and agree that:</p>
+                                            <ul>
+                                                <li>The platform is designed for peer-to-peer food sharing and is not a marketplace for selling food.</li>
+                                                <li>Any payments received via the app represent cost-sharing contributions for the preparation and packaging of food, not a sale.</li>
+                                                <li>Bytehood acts solely as a facilitator and is not liable for any issues arising from food preparation, quality, or consumption.</li>
+                                            </ul>
+                                            <h4>2. Responsibilities of Food Donors</h4>
+                                            <p>To ensure safety and quality, donors agree to:</p>
+                                            <ol>
+                                                <li>
+                                                    <strong>Provide Fresh and Safe Food:</strong>
+                                                    <ul>
+                                                        <li>Share only food that is fresh, safe, and fit for consumption.</li>
+                                                        <li>Refrain from sharing expired, spoiled, or contaminated items.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>Follow Hygiene and Safety Standards:</strong>
+                                                    <ul>
+                                                        <li>Maintain clean and sanitary conditions while preparing, handling, and packaging food.</li>
+                                                        <li>Use gloves, hairnets, and other appropriate safety measures during food preparation.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>Proper Packaging:</strong>
+                                                    <ul>
+                                                        <li>Pack food securely to prevent contamination or spillage.</li>
+                                                        <li>Label the package with the preparation date, a list of ingredients, and any allergens (e.g., nuts, dairy).</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                            <h4>3. Responsibilities of Food Recipients</h4>
+                                            <p>Recipients agree to:</p>
+                                            <ol>
+                                                <li>Inspect the food upon receipt and report any visible issues immediately via the app.</li>
+                                                <li>Consume the food within the recommended time frame for freshness and safety.</li>
+                                                <li>Use the app’s feedback system to rate their experience and report any concerns.</li>
+                                            </ol>
+                                            <h4>4. Prohibited Activities</h4>
+                                            <ul>
+                                                <li>Sharing or accepting food that violates local health and safety regulations.</li>
+                                                <li>Misrepresenting the nature, ingredients, or preparation method of the food.</li>
+                                                <li>Using the platform for unauthorized commercial purposes.</li>
+                                            </ul>
+                                            <h4>5. Liability Disclaimer</h4>
+                                            <ul>
+                                                <li>Bytehood is a facilitator and does not control or monitor the preparation, quality, or safety of the food shared by users.</li>
+                                                <li>By using the platform, you acknowledge that Bytehood is not responsible for any illnesses, injuries, or damages arising from the consumption of shared meals.</li>
+                                                <li>Users agree to hold Bytehood harmless from any claims or liabilities related to their participation in food sharing.</li>
+                                            </ul>
+                                            <h4>6. Dispute Resolution</h4>
+                                            <ul>
+                                                <li>All disputes between users should be reported to Bytehood.</li>
+                                                <li>Bytehood will mediate disputes but reserves the right to make final decisions in cases involving violations of these terms.</li>
+                                            </ul>
+                                            <h4>7. Account Suspension or Termination</h4>
+                                            <ul>
+                                                <li>Bytehood reserves the right to suspend or terminate accounts that:</li>
+                                                <ul>
+                                                    <li>Violate these terms and conditions.</li>
+                                                    <li>Receive repeated negative feedback or complaints.</li>
+                                                    <li>Engage in fraudulent or harmful activities.</li>
+                                                </ul>
+                                            </ul>
+                                            <h4>8. Amendments to the Terms</h4>
+                                            <ul>
+                                                <li>Bytehood reserves the right to update these terms and conditions at any time. Notifications of updates will be provided through the app.</li>
+                                                <li>Continued use of the platform constitutes acceptance of the revised terms.</li>
+                                            </ul>
+                                            <h4>9. Contact Information</h4>
+                                            <p>For any questions, concerns, or reports of violations, please contact us at: <a href="mailto:bitehood@gmail.com">bitehood@gmail.com</a></p>
+                                            <p>By using Bytehood, you agree to these terms and conditions. Thank you for helping us create a safer and more sustainable community through food sharing.</p>
+                                        `,
+                                        ar: `
+                                            <h3>الشروط والأحكام لاستخدام تطبيق بايتهود</h3>
+                                            <p>مرحباً بك في خدمات بايتهود. باستخدام منصتنا لمشاركة الوجبات الفائضة، فإنك توافق على الامتثال للشروط والأحكام التالية. تم تصميم هذه الشروط لضمان سلامة الطعام، والشفافية، وتجربة إيجابية لجميع المستخدمين.</p>
+                                            <h4>1. الاتفاق العام</h4>
+                                            <p>بتسجيلك واستخدامك لتطبيق بايتهود، فإنك تقر وتوافق على ما يلي:</p>
+                                            <ul>
+                                                <li>المنصة مصممة للمشاركة بين الأفراد وليست سوقًا لبيع الطعام.</li>
+                                                <li>أي مدفوعات يتم استلامها عبر التطبيق تمثل مساهمات في تكاليف التحضير والتعبئة للطعام، وليست مبيعات.</li>
+                                                <li>تعمل بايتهود كوسيط فقط ولا تتحمل المسؤولية عن أي مشكلات تنشأ بسبب التحضير أو جودة الطعام أو استهلاكه.</li>
+                                            </ul>
+                                            <h4>2. مسؤوليات المتبرعين بالطعام</h4>
+                                            <p>لضمان السلامة والجودة، يوافق المتبرعون على:</p>
+                                            <ol>
+                                                <li>
+                                                    <strong>توفير طعام طازج وآمن:</strong>
+                                                    <ul>
+                                                        <li>مشاركة الطعام الذي هو طازج وآمن وصالح للاستهلاك فقط.</li>
+                                                        <li>الامتناع عن مشاركة الأطعمة منتهية الصلاحية أو التالفة أو الملوثة.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>اتباع معايير النظافة والسلامة:</strong>
+                                                    <ul>
+                                                        <li>الحفاظ على بيئة نظيفة وصحية أثناء تحضير الطعام والتعامل معه وتعبئته.</li>
+                                                        <li>استخدام القفازات والشبكات الواقية وأي تدابير سلامة مناسبة أثناء التحضير.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>التعبئة السليمة:</strong>
+                                                    <ul>
+                                                        <li>تعبئة الطعام بشكل آمن لمنع التلوث أو الانسكاب.</li>
+                                                        <li>وضع علامة على العبوة بتاريخ التحضير وقائمة المكونات وأي مواد مسببة للحساسية (مثل المكسرات، الألبان).</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                            <h4>3. مسؤوليات مستلمي الطعام</h4>
+                                            <p>يوافق المستلمون على:</p>
+                                            <ol>
+                                                <li>فحص الطعام عند الاستلام والإبلاغ عن أي مشاكل مرئية فورًا عبر التطبيق.</li>
+                                                <li>استهلاك الطعام ضمن الإطار الزمني الموصى به للسلامة والطزاجة.</li>
+                                                <li>استخدام نظام التعليقات في التطبيق لتقييم تجربتهم والإبلاغ عن أي قلق.</li>
+                                            </ol>
+                                            <h4>4. الأنشطة المحظورة</h4>
+                                            <ul>
+                                                <li>مشاركة أو قبول الطعام الذي ينتهك اللوائح الصحية والسلامة المحلية.</li>
+                                                <li>تحريف طبيعة الطعام أو مكوناته أو طريقة تحضيره.</li>
+                                                <li>استخدام المنصة لأغراض تجارية غير مصرح بها.</li>
+                                            </ul>
+                                            <h4>5. إخلاء المسؤولية</h4>
+                                            <ul>
+                                                <li>بايتهود هي مجرد وسيط ولا تتحكم في التحضير أو جودة الطعام أو سلامته.</li>
+                                                <li>باستخدامك للمنصة، فإنك تقر بأن بايتهود غير مسؤولة عن أي أمراض أو إصابات أو أضرار ناتجة عن استهلاك الطعام المشترك.</li>
+                                                <li>يوافق المستخدمون على إعفاء بايتهود من أي مطالبات أو مسؤوليات تتعلق بمشاركتهم في مشاركة الطعام.</li>
+                                            </ul>
+                                            <h4>6. تسوية المنازعات</h4>
+                                            <ul>
+                                                <li>يجب الإبلاغ عن جميع المنازعات بين المستخدمين إلى بايتهود.</li>
+                                                <li>ستقوم بايتهود بالتوسط في المنازعات ولكنها تحتفظ بحقها في اتخاذ القرارات النهائية في الحالات التي تتضمن انتهاكات لهذه الشروط.</li>
+                                            </ul>
+                                            <h4>7. تعليق أو إنهاء الحساب</h4>
+                                            <ul>
+                                                <li>تحتفظ بايتهود بحقها في تعليق أو إنهاء الحسابات التي:</li>
+                                                <ul>
+                                                    <li>تنتهك هذه الشروط والأحكام.</li>
+                                                    <li>تتلقى ملاحظات سلبية متكررة أو شكاوى.</li>
+                                                    <li>تشارك في أنشطة احتيالية أو ضارة.</li>
+                                                </ul>
+                                            </ul>
+                                            <h4>8. التعديلات على الشروط</h4>
+                                            <ul>
+                                                <li>تحتفظ بايتهود بحقها في تحديث هذه الشروط والأحكام في أي وقت. سيتم توفير إشعارات بالتحديثات عبر التطبيق.</li>
+                                                <li>يعد الاستمرار في استخدام المنصة بمثابة قبول للشروط المعدلة.</li>
+                                            </ul>
+                                            <h4>9. معلومات الاتصال</h4>
+                                            <p>لأي أسئلة أو مخاوف أو تقارير عن انتهاكات، يرجى الاتصال بنا على: <a href="mailto:bitehood@gmail.com">bitehood@gmail.com</a></p>
+                                            <p>باستخدامك لبايتهود، فإنك توافق على هذه الشروط والأحكام. شكرًا لك على مساعدتنا في إنشاء مجتمع أكثر أمانًا واستدامة من خلال مشاركة الطعام.</p>
+                                        `,
+                                        fr: `
+                                            <h3>Conditions Générales d'utilisation de l'Application Bytehood</h3>
+                                            <p>Bienvenue sur les services Bytehood. En utilisant notre plateforme pour partager des repas excédentaires, vous acceptez de respecter les conditions générales suivantes. Ces conditions sont conçues pour garantir la sécurité alimentaire, la transparence et une expérience positive pour tous les utilisateurs.</p>
+                                            <h4>1. Accord Général</h4>
+                                            <p>En vous inscrivant et en utilisant l'application Bytehood, vous reconnaissez et acceptez ce qui suit :</p>
+                                            <ul>
+                                                <li>La plateforme est conçue pour le partage de nourriture entre particuliers et n'est pas un marché de vente de nourriture.</li>
+                                                <li>Toutes les sommes reçues via l'application représentent une contribution aux frais de préparation et d'emballage des repas, et non une vente.</li>
+                                                <li>Bytehood agit uniquement en tant que facilitateur et n'est pas responsable des problèmes liés à la préparation, la qualité ou la consommation des repas.</li>
+                                            </ul>
+                                            <h4>2. Responsabilités des Donneurs de Nourriture</h4>
+                                            <p>Pour garantir la sécurité et la qualité, les donneurs s'engagent à :</p>
+                                            <ol>
+                                                <li>
+                                                    <strong>Fournir une nourriture fraîche et sûre :</strong>
+                                                    <ul>
+                                                        <li>Partager uniquement des aliments frais, sûrs et propres à la consommation.</li>
+                                                        <li>Éviter de partager des produits périmés, abîmés ou contaminés.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>Respecter les normes d'hygiène et de sécurité :</strong>
+                                                    <ul>
+                                                        <li>Maintenir des conditions propres et sanitaires lors de la préparation, la manipulation et l'emballage des aliments.</li>
+                                                        <li>Utiliser des gants, des filets à cheveux et autres mesures de sécurité appropriées lors de la préparation des repas.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <strong>Emballer correctement :</strong>
+                                                    <ul>
+                                                        <li>Emballer les repas de manière sécurisée pour éviter toute contamination ou fuite.</li>
+                                                        <li>Indiquer la date de préparation, la liste des ingrédients et les allergènes éventuels (par exemple, noix, produits laitiers).</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
+                                            <h4>3. Responsabilités des Récepteurs de Nourriture</h4>
+                                            <p>Les récepteurs s'engagent à :</p>
+                                            <ol>
+                                                <li>Vérifier la nourriture à la réception et signaler toute anomalie visible immédiatement via l'application.</li>
+                                                <li>Consommer les repas dans le délai recommandé pour garantir leur fraîcheur et leur sécurité.</li>
+                                                <li>Utiliser le système de retour d'expérience de l'application pour évaluer leur expérience et signaler toute inquiétude.</li>
+                                            </ol>
+                                            <h4>4. Activités Interdites</h4>
+                                            <ul>
+                                                <li>Partager ou accepter des aliments qui ne respectent pas les règlements sanitaires locaux.</li>
+                                                <li>Fournir des informations fausses concernant les ingrédients, la nature ou la préparation des repas.</li>
+                                                <li>Utiliser la plateforme à des fins commerciales non autorisées.</li>
+                                            </ul>
+                                            <h4>5. Limitation de Responsabilité</h4>
+                                            <ul>
+                                                <li>Bytehood agit en tant que facilitateur et ne contrôle ni la préparation, ni la qualité, ni la sécurité des repas partagés.</li>
+                                                <li>En utilisant la plateforme, vous reconnaissez que Bytehood n'est pas responsable des maladies, blessures ou dommages résultant de la consommation de repas partagés.</li>
+                                                <li>Les utilisateurs acceptent de tenir Bytehood indemne de toute réclamation ou responsabilité liée à leur participation au partage de nourriture.</li>
+                                            </ul>
+                                            <h4>6. Résolution des Conflits</h4>
+                                            <ul>
+                                                <li>Tous les conflits entre utilisateurs doivent être signalés à Bytehood.</li>
+                                                <li>Bytehood agira en tant que médiateur dans les conflits, mais se réserve le droit de prendre des décisions finales dans les cas d'infractions à ces conditions.</li>
+                                            </ul>
+                                            <h4>7. Suspension ou Résiliation de Compte</h4>
+                                            <ul>
+                                                <li>Bytehood se réserve le droit de suspendre ou de résilier les comptes qui :</li>
+                                                <ul>
+                                                    <li>Violent ces conditions générales.</li>
+                                                    <li>Reçoivent des retours négatifs ou des plaintes répétées.</li>
+                                                    <li>Sont impliqués dans des activités frauduleuses ou nuisibles.</li>
+                                                </ul>
+                                            </ul>
+                                            <h4>8. Modifications des Conditions</h4>
+                                            <ul>
+                                                <li>Bytehood se réserve le droit de mettre à jour ces conditions à tout moment. Les mises à jour seront communiquées via l'application.</li>
+                                                <li>Le fait de continuer à utiliser la plateforme constitue l'acceptation des nouvelles conditions.</li>
+                                            </ul>
+                                            <h4>9. Informations de Contact</h4>
+                                            <p>Pour toute question, préoccupation ou signalement d'une violation, contactez-nous à : <a href="mailto:bitehood@gmail.com">bitehood@gmail.com</a></p>
+                                            <p>En utilisant Bytehood, vous acceptez ces conditions. Merci de contribuer à créer une communauté plus sûre et durable grâce au partage de nourriture.</p>
+                                        `
+                                    };
+                                
+                                    function setLanguage(lang) {
+                                        document.getElementById("termsContent").innerHTML = translations[lang];
+                                    }
+                                
+                                    // Set default language
+                                    setLanguage("en");
+                                </script>
+                                
+                                <!-- Vous pouvez ajouter plus de contenu ici si nécessaire -->
+                                <button onclick="closeTerms()" style="background-color: #F58724; color: #fff; border: none; padding: 14px 25px; border-radius: 10px; font-size: 20px; cursor: pointer; margin-top: 20px; display: block; margin-left: auto; margin-right: auto;">موافق</button>
+                            </div>
+                        </div>
+                        
+                        
+
                         <div id="locationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px;">
-                                <h2 style="margin-top: 0;">Enable Location</h2>
-                                <p>Your location is required to complete the form. Please enable location services in your device or browser settings.</p>
-                                <button onclick="closeModal()" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer;">OK</button>
+                                
+                                <p>من فضلك قم بتمكين الموقع لإكمال الاستمارة. تأكد من أنك في المنزل أو اختر الموقع يدويًا على الخريطة.</p>
+                                <button onclick="closeModal()" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer;">موافق</button>
                             </div>
                         </div>
                         
@@ -441,6 +719,7 @@
                                             map.setView([lat, lng], 15);
                         
                                             // Ajouter un marqueur
+                                            if (marker) marker.remove();  // Remove previous marker
                                             marker = L.marker([lat, lng]).addTo(map);
                         
                                             // Enregistrer les coordonnées dans le champ masqué
@@ -449,15 +728,37 @@
                         
                                             // Fermer le modal si la localisation est autorisée
                                             closeModal();
+                        
+                                            // Changer le texte du bouton pour "إرسال" et activer le bouton si les termes sont acceptés
+                                            document.getElementById('submitButton').innerHTML = 'إرسال';
+                                            if (document.getElementById('terms').checked) {
+                                                document.getElementById('submitButton').disabled = false;
+                                                document.getElementById('submitButton').style.backgroundColor = '#F58724';
+                                                document.getElementById('submitButton').style.cursor = 'pointer';
+                                            } else {
+                                                document.getElementById('submitButton').disabled = true;
+                                                document.getElementById('submitButton').style.backgroundColor = '#ccc';
+                                                document.getElementById('submitButton').style.cursor = 'not-allowed';
+                                            }
                                         },
                                         function(error) {
                                             // Afficher le pop-up en cas d'erreur ou de refus
                                             document.getElementById('locationModal').style.display = 'block';
+                                            // Changer le texte du bouton pour "تفعيل الموقع"
+                                            document.getElementById('submitButton').innerHTML = 'تفعيل الموقع';
+                                            document.getElementById('submitButton').disabled = false;
+                                            document.getElementById('submitButton').style.backgroundColor = '#F58724';
+                                            document.getElementById('submitButton').style.cursor = 'pointer';
                                         }
                                     );
                                 } else {
                                     // Afficher le pop-up si la géolocalisation n'est pas supportée
                                     document.getElementById('locationModal').style.display = 'block';
+                                    // Changer le texte du bouton pour "تفعيل الموقع"
+                                    document.getElementById('submitButton').innerHTML = 'تفعيل الموقع';
+                                    document.getElementById('submitButton').disabled = false;
+                                    document.getElementById('submitButton').style.backgroundColor = '#F58724';
+                                    document.getElementById('submitButton').style.cursor = 'pointer';
                                 }
                             }
                         
@@ -477,6 +778,41 @@
                             // Appeler la fonction pour vérifier la localisation immédiatement
                             checkLocation();
                         </script>
+                        
+                        <script>
+                            // Enable submit button when terms are accepted
+                            const termsCheckbox = document.getElementById('terms');
+                            const submitButton = document.getElementById('submitButton');
+                        
+                            // Lorsque l'utilisateur coche ou décoche les termes
+                            termsCheckbox.addEventListener('change', function () {
+                                if (this.checked && locationAuthorized) {  // Si les termes sont acceptés et la localisation est autorisée
+                                    submitButton.disabled = false;
+                                    submitButton.style.backgroundColor = '#F58724';
+                                    submitButton.style.cursor = 'pointer';
+                                } else {
+                                    submitButton.disabled = true;
+                                    submitButton.style.backgroundColor = '#ccc';
+                                    submitButton.style.cursor = 'not-allowed';
+                                }
+                            });
+                        
+                            // Open terms modal
+                            function openTerms() {
+                                document.getElementById('termsModal').style.display = 'block';
+                            }
+                        
+                            // Close terms modal
+                            function closeTerms() {
+                                document.getElementById('termsModal').style.display = 'none';
+                            }
+                        </script>
+                        
+                      
+                        
+                     
+                        
+
         </main>
 
         <!--========== FOOTER ==========-->
