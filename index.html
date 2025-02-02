@@ -55,7 +55,7 @@
     <div class="app__container bd-grid">
         <div class="app__data">
             <span class="section-subtitle app__initial"></span>
-            <h2 class="section-title app__initial">App is aviable</h2>
+            <h2 class="section-title app__initial">App is available</h2>
             <p class="app__description">Find our application and download it, you can make reservations, food orders, see your deliveries on the way and much more.</p>
             <div class="app__stores">
                 <a href="#"><img src="assets/img/app1.png" alt="" class="app__store"></a>
@@ -419,7 +419,6 @@
                         
                         <div id="termsModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000;">
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; width: 90%; max-width: 1200px; height: 90%; overflow-y: auto; text-align: right; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);">
-                                <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center;">Terms and Conditions for Using bytehood mobile app</h3>
                                 <div id="termsContainer" style="font-size: 18px; line-height: 1.8; margin: 20px;">
                                     <!-- Language Selection Buttons -->
                                     <div style="text-align: right; margin-bottom: 20px;">
@@ -433,11 +432,21 @@
                                         <!-- The content will be dynamically updated by JavaScript -->
                                     </div>
                                 </div>
+                                <style>
+                                    .ltr {
+                                        direction: ltr;
+                                        text-align: left;
+                                    }
                                 
+                                    .rtl {
+                                        direction: rtl;
+                                        text-align: right;
+                                    }
+                                </style>
                                 <script>
                                     const translations = {
                                         en: `
-                                            
+                                          <div class="ltr">   
                                         <h3>Terms and Conditions for Using Bytehood Mobile App</h3>
                                             <p>Welcome to Bytehood services. By using our platform to share surplus meals, you agree to comply with the following terms and conditions. These terms are designed to ensure food safety, transparency, and a positive experience for all users.</p>
                                             <h4>1. General Agreement</h4>
@@ -513,8 +522,10 @@
                                             <h4>9. Contact Information</h4>
                                             <p>For any questions, concerns, or reports of violations, please contact us at: <a href="mailto:bitehood@gmail.com">bitehood@gmail.com</a></p>
                                             <p>By using Bytehood, you agree to these terms and conditions. Thank you for helping us create a safer and more sustainable community through food sharing.</p>
-                                        `,
+                                          </div>
+                                            `,
                                         ar: `
+                                        <div class="rtl">
                                             <h3>الشروط والأحكام لاستخدام تطبيق بايتهود</h3>
                                             <p>مرحباً بك في خدمات بايتهود. باستخدام منصتنا لمشاركة الوجبات الفائضة، فإنك توافق على الامتثال للشروط والأحكام التالية. تم تصميم هذه الشروط لضمان سلامة الطعام، والشفافية، وتجربة إيجابية لجميع المستخدمين.</p>
                                             <h4>1. الاتفاق العام</h4>
@@ -590,8 +601,10 @@
                                             <h4>9. معلومات الاتصال</h4>
                                             <p>لأي أسئلة أو مخاوف أو تقارير عن انتهاكات، يرجى الاتصال بنا على: <a href="mailto:bitehood@gmail.com">bitehood@gmail.com</a></p>
                                             <p>باستخدامك لبايتهود، فإنك توافق على هذه الشروط والأحكام. شكرًا لك على مساعدتنا في إنشاء مجتمع أكثر أمانًا واستدامة من خلال مشاركة الطعام.</p>
-                                        `,
+                                          </div>
+                                            `,
                                         fr: `
+                                        <div class="ltr">
                                             <h3>Conditions Générales d'utilisation de l'Application Bytehood</h3>
                                             <p>Bienvenue sur les services Bytehood. En utilisant notre plateforme pour partager des repas excédentaires, vous acceptez de respecter les conditions générales suivantes. Ces conditions sont conçues pour garantir la sécurité alimentaire, la transparence et une expérience positive pour tous les utilisateurs.</p>
                                             <h4>1. Accord Général</h4>
@@ -667,7 +680,8 @@
                                             <h4>9. Informations de Contact</h4>
                                             <p>Pour toute question, préoccupation ou signalement d'une violation, contactez-nous à : <a href="mailto:bitehood@gmail.com">bitehood@gmail.com</a></p>
                                             <p>En utilisant Bytehood, vous acceptez ces conditions. Merci de contribuer à créer une communauté plus sûre et durable grâce au partage de nourriture.</p>
-                                        `
+                                         </div>
+                                            `
                                     };
                                 
                                     function setLanguage(lang) {
@@ -688,95 +702,76 @@
                         <div id="locationModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; width: 90%; max-width: 400px;">
                                 
-                                <p>من فضلك قم بتمكين الموقع لإكمال الاستمارة. تأكد من أنك في المنزل أو اختر الموقع يدويًا على الخريطة.</p>
+                                <p>يرجى تفعيل الموقع ثم تحديث الصفحة لرؤية موقعك بدقة. تأكد من أنك في المنزل أو اختر الموقع يدويًا على الخريطة.</p>
                                 <button onclick="closeModal()" style="background-color: #F58724; color: #fff; border: none; padding: 10px 15px; border-radius: 4px; font-size: 16px; cursor: pointer;">موافق</button>
                             </div>
                         </div>
                         
                         <script>
                             // Initialiser la carte
-                            var map = L.map('map').setView([36.8065, 10.1815], 10); // Coordonnées par défaut (Tunis)
-                        
-                            // Ajouter les tuiles de la carte
-                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                                attribution: '© OpenStreetMap'
-                            }).addTo(map);      
-                        
-                            // Marqueur pour afficher la localisation
-                            var marker;
-                            var locationAuthorized = false;
-                        
-                            // Vérifier si la géolocalisation est disponible
-                            function checkLocation() {
-                                if (navigator.geolocation) {
-                                    navigator.geolocation.getCurrentPosition(
-                                        function(position) {
-                                            var lat = position.coords.latitude;
-                                            var lng = position.coords.longitude;
-                        
-                                            // Centrer la carte sur la localisation de l'utilisateur
-                                            map.setView([lat, lng], 15);
-                        
-                                            // Ajouter un marqueur
-                                            if (marker) marker.remove();  // Remove previous marker
-                                            marker = L.marker([lat, lng]).addTo(map);
-                        
-                                            // Enregistrer les coordonnées dans le champ masqué
-                                            document.getElementById('location').value = lat + ',' + lng;
-                                            locationAuthorized = true;
-                        
-                                            // Fermer le modal si la localisation est autorisée
-                                            closeModal();
-                        
-                                            // Changer le texte du bouton pour "إرسال" et activer le bouton si les termes sont acceptés
-                                            document.getElementById('submitButton').innerHTML = 'إرسال';
-                                            if (document.getElementById('terms').checked) {
-                                                document.getElementById('submitButton').disabled = false;
-                                                document.getElementById('submitButton').style.backgroundColor = '#F58724';
-                                                document.getElementById('submitButton').style.cursor = 'pointer';
-                                            } else {
-                                                document.getElementById('submitButton').disabled = true;
-                                                document.getElementById('submitButton').style.backgroundColor = '#ccc';
-                                                document.getElementById('submitButton').style.cursor = 'not-allowed';
-                                            }
-                                        },
-                                        function(error) {
-                                            // Afficher le pop-up en cas d'erreur ou de refus
-                                            document.getElementById('locationModal').style.display = 'block';
-                                            // Changer le texte du bouton pour "تفعيل الموقع"
-                                            document.getElementById('submitButton').innerHTML = 'تفعيل الموقع';
-                                            document.getElementById('submitButton').disabled = false;
-                                            document.getElementById('submitButton').style.backgroundColor = '#F58724';
-                                            document.getElementById('submitButton').style.cursor = 'pointer';
-                                        }
-                                    );
-                                } else {
-                                    // Afficher le pop-up si la géolocalisation n'est pas supportée
-                                    document.getElementById('locationModal').style.display = 'block';
-                                    // Changer le texte du bouton pour "تفعيل الموقع"
-                                    document.getElementById('submitButton').innerHTML = 'تفعيل الموقع';
-                                    document.getElementById('submitButton').disabled = false;
-                                    document.getElementById('submitButton').style.backgroundColor = '#F58724';
-                                    document.getElementById('submitButton').style.cursor = 'pointer';
-                                }
-                            }
-                        
-                            // Gérer l'envoi du formulaire
-                            document.getElementById('myForm').addEventListener('submit', function(event) {
-                                if (!locationAuthorized) {
-                                    event.preventDefault(); // Empêcher l'envoi du formulaire
-                                    checkLocation(); // Vérifier la localisation
-                                }
-                            });
-                        
-                            // Fermer le pop-up
-                            function closeModal() {
-                                document.getElementById('locationModal').style.display = 'none';
-                            }
-                        
-                            // Appeler la fonction pour vérifier la localisation immédiatement
-                            checkLocation();
+var map = L.map('map').setView([36.8065, 10.1815], 10); // Coordonnées par défaut (Tunis)
+
+// Ajouter les tuiles de la carte
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);      
+
+// Marqueur pour afficher la localisation
+var marker;
+var locationAuthorized = false;
+
+// Vérifier si la géolocalisation est disponible
+function checkLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+
+                // Centrer la carte sur la localisation de l'utilisateur
+                map.setView([lat, lng], 15);
+
+                // Ajouter un marqueur à l'emplacement détecté
+                updateMarker(lat, lng);
+                locationAuthorized = true;
+
+                // Fermer le modal si la localisation est autorisée
+                closeModal();
+            },
+            function(error) {
+                // Afficher le pop-up en cas d'erreur ou de refus
+                document.getElementById('locationModal').style.display = 'block';
+            }
+        );
+    } else {
+        document.getElementById('locationModal').style.display = 'block';
+    }
+}
+
+// Fonction pour mettre à jour le marqueur
+function updateMarker(lat, lng) {
+    if (marker) marker.remove(); // Supprimer l'ancien marqueur
+    marker = L.marker([lat, lng]).addTo(map);
+    document.getElementById('location').value = lat + ',' + lng;
+}
+
+// Ajouter un événement pour permettre à l'utilisateur de sélectionner un emplacement manuellement
+map.on('click', function(e) {
+    var lat = e.latlng.lat;
+    var lng = e.latlng.lng;
+    updateMarker(lat, lng);
+    locationAuthorized = true; // Autoriser la localisation même si elle n'est pas automatique
+});
+
+// Fermer le pop-up
+function closeModal() {
+    document.getElementById('locationModal').style.display = 'none';
+}
+
+// Vérifier la localisation au chargement
+checkLocation();
+
                         </script>
                         
                         <script>
@@ -831,9 +826,7 @@
                 <div class="footer__content">
                     <h3 class="footer__title">Services</h3>
                     <ul>
-                        <li><a href="#" class="footer__link">Delivery</a></li>
                         <li><a href="#" class="footer__link">Pricing</a></li>
-                        <li><a href="#" class="footer__link">Fast food</a></li>
                         <li><a href="#" class="footer__link">Reserve your spot</a></li>
                     </ul>
                 </div>
